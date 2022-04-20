@@ -1,0 +1,7 @@
+sudo apt-get install sql-server
+sudo /etc/init.d/mysql start 
+
+sudo mysql
+
+create user 'zerokei'@'localhost' IDENTIFIED BY '123456'
+grant create,insert on Library_management_system.* TO 'zerokei'@'localhost';
