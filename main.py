@@ -1,9 +1,6 @@
 import pymysql
-
-from gui.RegisterPage import *
-from gui.LoginPage import *
+from gui.LogPage import *
 from tkinter import *
-
 
 window = Tk()
 # 設定視窗標題、大小和背景顏色

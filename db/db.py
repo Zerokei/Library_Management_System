@@ -9,9 +9,12 @@ class DB:
             passwd = '123456',
             db='Library_management_system',
             charset = 'utf8')
+        self.cur = self.connect.cursor()
     def query_sql(self, sql):
-        self.connect.cursor().execute(sql)
-        return self.connect.cursor().fetchall()
+        self.cur.execute(sql)
+        message = self.cur.fetchall()
+        return message
+
     def update_sql(self, sql):
-        self.connect.cursor().execute(sql)
+        self.cur.execute(sql)
         self.connect.commit()

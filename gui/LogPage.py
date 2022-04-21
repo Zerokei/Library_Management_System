@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter.messagebox import * 
-from RegisterPage import *
+import gui.RegPage as rp
+import gui.UserPage as up
+import gui.AdminPage as ap
+import op as op
 
 class LoginPage():
     def __init__(self, main=None):
@@ -34,20 +37,32 @@ class LoginPage():
 
         btn_frame = Frame(self.page, bg='white')
         btn_frame.pack(side=TOP,ipady=10)
-        login_btn = Button(btn_frame, text='login', command=self.try_login)
-        login_btn.pack(side=LEFT)
+        Button(btn_frame, text='login', command=self.try_login).pack(side=LEFT)
         empty_btn = Label(btn_frame, bg='white')
-        empty_btn.pack(side=LEFT,ipadx=20)
+        empty_btn.pack(side=LEFT,ipadx=10)
+        Button(btn_frame, text='login_admin', command=self.admin_login).pack(side=LEFT)
+        empty_btn = Label(btn_frame, bg='white')
+        empty_btn.pack(side=LEFT,ipadx=10)
         register_btn = Button(btn_frame, text='register', command=self.register)
         register_btn.pack(side=LEFT)
     
     def try_login(self):
+        if(op.operations().login(self.user_entry.get(),self.passward_entry.get()) == False):
+            showinfo(title='Error', message='Wrong username or wrong passward!')
+            return        
+        self.page.destroy()
+        up.UserPage(self.root)
+
+    def register(self):
+        self.page.destroy()
+        rp.RegisterPage(self.root)
+
+    def admin_login(self):
         username = self.user_entry.get()
         passward = self.passward_entry.get()
-    def register(self):
-        # username = self.user_entry.get()
-        # passward = self.passward_entry.get()
-        self.page.destroy()
-        RegisterPage(self.root)
-
+        if(username != 'admin' or passward != 'admin'):
+            showinfo(title='Error', message='Wrong username or wrong passward!')
+        else:
+            self.page.destroy()
+            ap.AdminPage(self.root)
 
