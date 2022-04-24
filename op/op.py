@@ -38,8 +38,12 @@ class operations(object):
 
     def query_book(self, person=None):
         sql = "select * from book"
-        books = self.db.query_sql(sql)
-        return books
+        return self.db.query_sql(sql)
+
+    def query_own_book(self, person=None):
+        sql = "select book.bid, book.title, borrow.date from book natural join(borrow) where borrow.bid = book.bid and borrow.sid = {}".format(operations().login_user)
+        print(operations().login_user)
+        return self.db.query_sql(sql)
 
     def lend_book(self, bid):
         sql = "select * from book where bid={}".format(bid)
@@ -48,7 +52,7 @@ class operations(object):
             showinfo(title='Error', message='Book is not exist!') 
             return
 
-        if operations().if_lend(bid) == True:
+        if operations().if_lend(bid) == False:
             sql = "insert into borrow values({},{},{},'{}');".format(bid, bid, operations().login_user, datetime.today().strftime('%Y-%m-%d'))
             self.db.update_sql(sql)
             showinfo(title='Info', message='Lend book successfully!')
@@ -58,16 +62,16 @@ class operations(object):
             return
 
     def ret_book(self, bid):
-        sql = "select * from book where bid={}".format(bid)
+        sql = "select * from borrow where bid={}".format(bid)
         book = self.db.query_sql(sql)
         if not book:
             showinfo(title='Error', message='Book is not exist!') 
             return
-
+        print(book[0][2], operations().login_user, type(book[0][2]), type(operations().login_user))
         if operations().if_lend(bid) == False:
             showinfo(title='Error', message='This book has not been lent!')
             return
-        elif res[0][2] != operations().login_user:
+        elif str(book[0][2]) != operations().login_user:
             showinfo(title='Error', message='Sorry! This book is not lent by you!')
         else:
             sql = "delete from borrow where cid = {};".format(bid)

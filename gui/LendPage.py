@@ -17,12 +17,12 @@ class LendPage():
         self.page.configure(background='white')
         top_frame = Frame(self.page, bg='white')
         top_frame.pack(side=TOP, ipady=70)
-        top_label = Label(top_frame, text = "Rent books", bg= "white", font=("Calibri", 20))
+        top_label = Label(top_frame, text = "Lend books", bg= "white", font=("Calibri", 20))
         top_label.pack(side=LEFT)
 
         bid_frame = Frame(self.page, bg='white')
         bid_frame.pack(side=TOP,ipady=10)
-        Label(bid_frame, text='rent book id', bg='white' ,font=("Calibri", 12)).pack(side=LEFT)
+        Label(bid_frame, text='lend book id', bg='white' ,font=("Calibri", 12)).pack(side=LEFT)
         self.bid = Entry(bid_frame, bg='white')
         self.bid.pack(side=LEFT)
 

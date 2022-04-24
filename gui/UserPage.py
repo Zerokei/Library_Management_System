@@ -27,15 +27,19 @@ class UserPage():
         btn_frame.pack(side=TOP,ipady=10)
         Button(btn_frame, text='lend books', command=self.rent).pack(side=LEFT)
         Label(btn_frame, bg='white').pack(side=LEFT,ipadx=10)
+        Button(btn_frame, text='my books', command=self.query_own).pack(side=LEFT)
+        Label(btn_frame, bg='white').pack(side=LEFT,ipadx=10)
         Button(btn_frame, text='show books', command=self.query).pack(side=LEFT)
         Label(btn_frame, bg='white').pack(side=LEFT,ipadx=10)
         Button(btn_frame, text='return books', command=self.ret).pack(side=LEFT)
         Label(btn_frame, bg='white').pack(side=LEFT,ipadx=10)
         Button(btn_frame, text='return', command=self.goback).pack(side=LEFT)
-
+    def query_own(self):
+        qp.ShowBooks.OwnBook()
     def query(self):
-        self.page.destroy()
-        qp.QueryPage(self.root)
+        qp.ShowBooks.Do()
+        # self.page.destroy()
+        # qp.QueryPage(self.root)
     def rent(self):
         self.page.destroy()
         rtp.LendPage(self.root)

@@ -12,6 +12,5 @@ show tables;
 
 
 
-
 https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database
 https://blog.techbridge.cc/2019/09/21/how-to-use-python-tkinter-to-make-gui-app-tutorial/

@@ -28,7 +28,7 @@ class AdminPage():
         empty_btn = Label(btn_frame, bg='white')
         empty_btn.pack(side=LEFT,ipadx=20)
         Button(btn_frame, text='return', command=self.goback).pack(side=LEFT)
-
+    
     def query(self):
         self.page.destroy()
         qp.QueryAdminPage(self.root)

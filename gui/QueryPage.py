@@ -57,6 +57,7 @@ class QueryAdminPage():
     def goback(self):
         self.page.destroy()
         ap.AdminPage(self.root)
+
 class ShowBooks():
     def Do():
         tree=ttk.Treeview(Tk())#表格
@@ -91,5 +92,26 @@ class ShowBooks():
                 s = 'Y'
             value.append(s)
             tree.insert("", i, text=book[0] ,values=value) #插入数据，
+                   
+        tree.pack()
+    def OwnBook():
+        tree=ttk.Treeview(Tk())#表格
+        tree["columns"]=("bid","title",'date')
+        tree.column("bid",width=200)   
+        tree.column("title",width=200)   
+        
+        tree.heading("bid",text="bid")  
+        tree.heading("title",text="title")  
+        tree.heading("date",text="date")  
+
+        books = op.operations().query_own_book()
+        i = 0
+        for book in books:
+            i = i + 1
+            value=[]
+            value.append(book[0])
+            value.append(book[1])
+            value.append(book[2])
+            tree.insert("", i, text=i ,values=value) #插入数据，
                    
         tree.pack()
