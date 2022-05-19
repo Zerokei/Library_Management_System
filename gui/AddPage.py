@@ -3,7 +3,7 @@ from tkinter.messagebox import *
 from db.db import *
 import gui.LogPage as lp
 import gui.AdminPage as ap
-import op as op
+import op.op as op
 
 class AddPage():
     def __init__(self, main=None):
@@ -67,4 +67,5 @@ class AddPage():
         self.page.destroy()
         ap.AdminPage(self.root)
     def insert(self):
-        op.operations().insert_book(self.bid.get(), self.title.get(), self.author.get(), self.year.get(), self.category.get(), self.price.get())
+        ops=op.operations()
+        ops.insert_book(self.bid.get(), self.title.get(), self.author.get(), self.year.get(), self.category.get(), self.price.get())

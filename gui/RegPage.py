@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter.messagebox import * 
 from db.db import *
 import gui.LogPage as lp
-import op as op
+import op.op as op
 
 class RegisterPage():
     def __init__(self, main=None):
@@ -73,7 +73,8 @@ class RegisterPage():
         if self.password.get() != self.password2.get():
             showinfo(title='Error', message='Inconsistent passwords!')
             return
-        op.operations().register(self.user.get(), self.name.get(), self.gender.get(), self.password.get(), self.password2.get())
+        ops=op.operations()
+        ops.register(self.user.get(), self.name.get(), self.gender.get(), self.password.get(), self.password2.get())
     def goback(self):
         self.page.destroy()
         lp.LoginPage(self.root)

@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter.messagebox import * 
 from db.db import *
 import gui.UserPage as up
-import op as op
+import op.op as op
 
 class ReturnPage():
     def __init__(self, main=None):
@@ -36,4 +36,5 @@ class ReturnPage():
         self.page.destroy()
         up.UserPage(self.root)
     def ret(self):
-        op.operations().ret_book(self.bid.get())
+        ops=op.operations()
+        ops.ret_book(self.bid.get())

@@ -3,7 +3,7 @@ from tkinter.messagebox import *
 import gui.RegPage as rp
 import gui.UserPage as up
 import gui.AdminPage as ap
-import op as op
+import op.op as op
 
 class LoginPage():
     def __init__(self, main=None):
@@ -47,7 +47,8 @@ class LoginPage():
         register_btn.pack(side=LEFT)
     
     def try_login(self):
-        if(op.operations().login(self.user_entry.get(),self.passward_entry.get()) == False):
+        ops = op.operations()
+        if(ops.login(self.user_entry.get(),self.passward_entry.get()) == False):
             showinfo(title='Error', message='Wrong username or wrong passward!')
             return        
         self.page.destroy()

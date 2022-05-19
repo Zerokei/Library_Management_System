@@ -45,6 +45,10 @@ class operations(object):
         print(operations().login_user)
         return self.db.query_sql(sql)
 
+    def query_price(self, A, B):
+        sql = "select * from book where book.price > {} and book.price < {}".format(A,B)
+        return self.db.query_sql(sql)
+
     def lend_book(self, bid):
         sql = "select * from book where bid={}".format(bid)
         book = self.db.query_sql(sql)

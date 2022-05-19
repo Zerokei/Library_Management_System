@@ -25,10 +25,15 @@ class AdminPage():
         btn_frame.pack(side=TOP,ipady=10)
         Button(btn_frame, text='add', command=self.add).pack(side=LEFT)
         Button(btn_frame, text='query', command=self.query).pack(side=LEFT)
+        
+        Button(btn_frame, text='query price', command=self.query_p).pack(side=LEFT)
         empty_btn = Label(btn_frame, bg='white')
         empty_btn.pack(side=LEFT,ipadx=20)
         Button(btn_frame, text='return', command=self.goback).pack(side=LEFT)
-    
+
+    def query_p(self):
+        self.page.destroy()
+        qp.QueryAdminPricePage(self.root)    
     def query(self):
         self.page.destroy()
         qp.QueryAdminPage(self.root)

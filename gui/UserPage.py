@@ -5,7 +5,7 @@ import gui.LogPage as lp
 import gui.LendPage as rtp
 import gui.QueryPage as qp
 import gui.ReturnPage as rp
-import op as op
+import op.op as op
 
 class UserPage():
     def __init__(self, main=None):
@@ -15,12 +15,13 @@ class UserPage():
         self.Do()
 
     def Do(self):
+        ops=op.operations()
         self.page = Frame(self.root) #创建Frame 
         self.page.pack() 
         self.page.configure(background='white')
         top_frame = Frame(self.page, bg='white')
         top_frame.pack(side=TOP, ipady=70)
-        top_label = Label(top_frame, text = "Welcome! {}".format(op.operations().login_name), bg= "white", font=("Calibri", 20))
+        top_label = Label(top_frame, text = "Welcome! {}".format(ops.login_name), bg= "white", font=("Calibri", 20))
         top_label.pack(side=LEFT)
 
         btn_frame = Frame(self.page, bg='white')
